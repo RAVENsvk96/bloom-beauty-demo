@@ -1,25 +1,21 @@
 import Link from "next/link";
-import { company } from "@/content/company";
 
 type LogoProps = {
   className?: string;
 };
 
-export default function Logo({
-  className = "",
-}: LogoProps) {
+export default function Logo({ className = "" }: LogoProps) {
   return (
     <Link
-      href="/"
-      aria-label={company.name}
-      className={`inline-flex flex-col leading-none transition-all duration-300 hover:opacity-90 ${className}`}
+      href="#"
+      aria-label="Bloom Beauty Studio — domov"
+      className={`group inline-flex items-baseline gap-2 leading-none ${className}`}
     >
-      <span className="text-2xl font-semibold tracking-[0.14em] text-foreground sm:text-[1.75rem]">
-        {company.name}
+      <span className="font-display text-[2rem] font-medium tracking-[-0.035em] text-foreground transition-colors group-hover:text-primary sm:text-[2.2rem]">
+        Bloom
       </span>
-
-      <span className="mt-2 text-[0.68rem] font-medium uppercase tracking-[0.32em] text-primary">
-        {company.slogan}
+      <span className="text-[0.58rem] font-semibold uppercase tracking-[0.3em] text-primary">
+        Beauty Studio
       </span>
     </Link>
   );

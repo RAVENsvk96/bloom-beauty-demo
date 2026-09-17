@@ -2,28 +2,33 @@
 
 import SectionHeading from "@/components/layout/SectionHeading";
 import { motion } from "framer-motion";
-import { Heart, LayoutTemplate, Sparkles } from "lucide-react";
 
 const goals = [
-  { icon: Sparkles, title: "Prémiový prvý dojem", text: "Jemná paleta, kvalitné fotografie a čistá typografia vytvárajú profesionálny charakter značky." },
-  { icon: LayoutTemplate, title: "Prehľadná ponuka", text: "Služby a dôležité informácie sú usporiadané tak, aby sa v nich návštevníčka rýchlo zorientovala." },
-  { icon: Heart, title: "Príjemný zážitok", text: "Responzívny návrh pôsobí pokojne a zrozumiteľne na mobile aj veľkej obrazovke." },
+  { title: "Prémiový prvý dojem", text: "Editorial typografia, tlmená paleta a kvalitné fotografie vytvárajú zapamätateľný charakter značky." },
+  { title: "Prehľadná ponuka", text: "Služby a ceny majú jasnú hierarchiu, vďaka ktorej sa návštevníčka rýchlo zorientuje." },
+  { title: "Príjemný zážitok", text: "Rozloženie zostáva pokojné, čitateľné a prirodzené na mobile aj veľkej obrazovke." },
 ];
 
 export default function BeautyReviews() {
   return (
-    <section id="recenzie" className="bg-surface/50 px-6 py-24">
-      <div className="mx-auto max-w-6xl">
+    <section id="recenzie" className="relative overflow-hidden bg-[#2b2021] px-6 py-24 text-white sm:px-10 lg:px-14 lg:py-32">
+      <div className="pointer-events-none absolute -right-20 -top-36 font-display text-[26rem] italic leading-none text-white/[0.025]">B</div>
+      <div className="relative mx-auto max-w-[90rem]">
         <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.55 }}>
-          <SectionHeading badge="Ciele návrhu" title="Web postavený na dôvere a atmosfére." description="Táto sekcia predstavuje dizajnové ciele demo projektu. Neobsahuje recenzie skutočných klientiek." centered />
-          <div className="mt-16 grid gap-6 md:grid-cols-3">
-            {goals.map((item, index) => { const Icon = item.icon; return (
-              <motion.article key={item.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.45, delay: index * 0.08 }} className="rounded-[2rem] border border-border bg-surface p-8 shadow-sm">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10"><Icon className="h-5 w-5 text-primary" /></div>
-                <h3 className="mt-7 text-xl font-semibold text-foreground">{item.title}</h3>
-                <p className="mt-4 leading-7 text-muted">{item.text}</p>
-              </motion.article>
-            ); })}
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
+            <SectionHeading badge="Ciele návrhu" title="Dizajn, ktorý buduje dôveru." description="Táto sekcia vysvetľuje zámer ukážkového projektu. Neobsahuje vymyslené hodnotenia ani recenzie klientiek." inverted />
+
+            <div className="border-t border-white/20">
+              {goals.map((item, index) => (
+                <motion.article key={item.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: index * 0.07 }} className="grid gap-4 border-b border-white/15 py-8 sm:grid-cols-[3rem_1fr] sm:gap-6">
+                  <span className="font-display text-2xl italic text-[#d6a7b2]">0{index + 1}</span>
+                  <div>
+                    <h3 className="font-display text-2xl font-medium text-white sm:text-3xl">{item.title}</h3>
+                    <p className="mt-3 max-w-xl text-sm leading-7 text-white/55">{item.text}</p>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>

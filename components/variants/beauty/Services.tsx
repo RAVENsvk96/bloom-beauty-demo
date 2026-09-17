@@ -3,100 +3,57 @@
 import SectionHeading from "@/components/layout/SectionHeading";
 import { services } from "@/content/variants/beauty";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowDownRight } from "lucide-react";
 
 export default function BeautyServices() {
   return (
-    <section id="sluzby" className="bg-surface/50 px-6 py-24">
-      <div className="mx-auto max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.55 }}
-        >
-          <SectionHeading
-            badge="Naše služby"
-            title="Starostlivosť vytvorená pre vás."
-            description="Vyberte si profesionálne beauty ošetrenie prispôsobené vašim potrebám, štýlu a očakávanému výsledku."
-            centered
-          />
+    <section id="sluzby" className="relative overflow-hidden bg-surface px-6 py-24 sm:px-10 lg:px-14 lg:py-32">
+      <div className="pointer-events-none absolute right-0 top-0 font-display text-[18rem] leading-none text-primary/[0.035] sm:text-[25rem]">B</div>
 
-          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="relative mx-auto max-w-[90rem]">
+        <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.55 }} className="lg:sticky lg:top-32 lg:self-start">
+            <SectionHeading
+              badge="Naše služby"
+              title="Rituály pre vašu krásu."
+              description="Každé ošetrenie prispôsobujeme vašim potrebám a výsledku, ktorý chcete dosiahnuť. Uvedené ceny sú súčasťou ukážkového konceptu."
+            />
+
+            <a href="#galeria" className="mt-9 inline-flex items-center gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-primary transition hover:text-primary-hover">
+              Objaviť atmosféru <ArrowDownRight className="size-4" />
+            </a>
+          </motion.div>
+
+          <div className="border-t border-foreground/20">
             {services.map((service, index) => {
               const Icon = service.icon;
-              const isFeatured = index === 0;
-
               return (
                 <motion.article
                   key={service.title}
-                  initial={{ opacity: 0, y: 22 }}
+                  initial={{ opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.15 }}
-                  transition={{
-                    duration: 0.45,
-                    delay: index * 0.07,
-                  }}
-                  className={`group relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-border bg-surface p-8 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10 ${
-                    isFeatured ? "md:col-span-2 lg:col-span-2" : ""
-                  }`}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.45, delay: index * 0.05 }}
+                  className="group grid gap-5 border-b border-foreground/15 py-8 sm:grid-cols-[3rem_1fr_auto] sm:items-start sm:gap-6 lg:py-10"
                 >
-                  {isFeatured && (
-                    <div className="absolute -right-16 -top-16 h-44 w-44 rounded-full bg-primary/10 blur-2xl" />
-                  )}
-
-                  <div className="relative flex items-start justify-between gap-6">
-                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-white">
-                      <Icon className="h-6 w-6" aria-hidden="true" />
+                  <span className="font-display text-2xl font-medium italic text-primary/65">0{index + 1}</span>
+                  <div>
+                    <div className="flex items-center gap-3">
+                      <Icon className="size-4 text-primary" aria-hidden="true" />
+                      <h3 className="font-display text-3xl font-medium tracking-[-0.025em] text-foreground transition-colors group-hover:text-primary sm:text-4xl">
+                        {service.title}
+                      </h3>
                     </div>
-
-                    <span className="rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
-                      {service.price}
-                    </span>
+                    <p className="mt-4 max-w-2xl text-sm leading-7 text-muted">{service.description}</p>
                   </div>
-
-                  <div className="relative mt-8">
-                    <h3
-                      className={`font-semibold text-foreground ${
-                        isFeatured ? "text-2xl" : "text-xl"
-                      }`}
-                    >
-                      {service.title}
-                    </h3>
-
-                    <p
-                      className={`mt-4 leading-7 text-muted ${
-                        isFeatured ? "max-w-2xl text-base" : "text-sm"
-                      }`}
-                    >
-                      {service.description}
-                    </p>
-                  </div>
-
-                  <a
-                    href="#kontakt"
-                    className="relative mt-8 inline-flex items-center gap-2 self-start text-sm font-semibold text-primary transition-colors hover:text-primary-hover"
-                  >
-                    Rezervovať ošetrenie
-                    <ArrowRight
-                      className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-                      aria-hidden="true"
-                    />
-                  </a>
+                  <p className="justify-self-start whitespace-nowrap border border-primary/25 px-4 py-2 text-xs font-semibold text-primary sm:justify-self-end">
+                    {service.price}
+                  </p>
                 </motion.article>
               );
             })}
           </div>
-
-          <div className="mt-14 text-center">
-            <a
-              href="#kontakt"
-              className="inline-flex items-center justify-center rounded-xl bg-primary px-7 py-3.5 text-base font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary-hover hover:shadow-lg hover:shadow-primary/20"
-            >
-              Rezervovať termín
-            </a>
-          </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

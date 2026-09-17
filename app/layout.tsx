@@ -1,9 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Sans, Fraunces } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin", "latin-ext"],
+});
+
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin", "latin-ext"],
+});
+
 const siteUrl = "https://bloom-beauty-demo-eta.vercel.app";
 
 export const metadata: Metadata = {
@@ -46,13 +54,13 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#fffaf8",
+  themeColor: "#f7f1ec",
   colorScheme: "light",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="sk" className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}>
+    <html lang="sk" className={`${dmSans.variable} ${fraunces.variable} h-full scroll-smooth antialiased`}>
       <body className="flex min-h-full flex-col bg-background text-foreground">{children}</body>
     </html>
   );
