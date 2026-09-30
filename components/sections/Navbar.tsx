@@ -16,7 +16,7 @@ export default function Navbar() {
         Ukážkový projekt — nejde o skutočné beauty štúdio ani rezervačný web
       </div>
 
-      <header className="absolute left-0 right-0 top-[35px] z-50 border-b border-foreground/10 bg-background/85 backdrop-blur-xl">
+      <header className="sticky left-0 right-0 top-0 z-50 lg:absolute lg:top-[35px] border-b border-foreground/10 bg-background/85 backdrop-blur-xl">
         <nav className="mx-auto flex h-[82px] max-w-[90rem] items-center justify-between px-6 sm:px-10 lg:px-14" aria-label="Hlavná navigácia">
           <Logo />
 
